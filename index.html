@@ -171,9 +171,10 @@
                 <h3>Task Scheduling</h3>
                 <input type="datetime-local" id="task-due-date">
                 <select id="task-priority">
-                    <option value="urgent">Urgent</option>
-                    <option value="important">Important</option>
-                    <option value="remember">Remember</option>
+                    <option value="urgent-important">Urgent & Important</option>
+                    <option value="urgent-not-important">Urgent & Not Important</option>
+                    <option value="not-urgent-important">Not Urgent & Important</option>
+                    <option value="not-urgent-not-important">Not Urgent & Not Important</option>
                 </select>
                 <button id="schedule-task-btn" onclick="scheduleTask()">Schedule Task</button>
                 <ul id="scheduled-task-list" class="task-list"></ul>
@@ -304,347 +305,27 @@
 
             const newScheduledTask = document.createElement('li');
             newScheduledTask.innerHTML = `Due: ${taskDueDate}, Priority: ${taskPriority} <button onclick="deleteScheduledTask(this)">Delete</button>`;
-            scheduledTaskList.appendChild(newScheduledTask);
 
-            saveScheduledTasks();
-        }
-
-        function deleteScheduledTask(button) {
-            const task = button.parentElement;
-            task.remove();
-            saveScheduledTasks();
-        }
-
-        function saveScheduledTasks() {
-            const scheduledTaskList = document.getElementById('scheduled-task-list');
-            const scheduledTasks = [];
+            // Insert the new task in the correct order based on priority
+            let inserted = false;
             for (let i = 0; i < scheduledTaskList.children.length; i++) {
-                scheduledTasks.push(scheduledTaskList.children[i].textContent.replace(' Delete', ''));
-            }
-            localStorage.setItem('scheduledTasks', JSON.stringify(scheduledTasks));
-        }
-
-        function loadScheduledTasks() {
-            const scheduledTasks = JSON.parse(localStorage.getItem('scheduledTasks')) || [];
-            const scheduledTaskList = document.getElementById('scheduled-task-list');
-            scheduledTaskList.innerHTML = '';
-            scheduledTasks.forEach(task => {
-                const newScheduledTask = document.createElement('li');
-                newScheduledTask.innerHTML = `${task} <button onclick="deleteScheduledTask(this)">Delete</button>`;
-                scheduledTaskList.appendChild(newScheduledTask);
-            });
-        }
-    </script>
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Productivity Web App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            display: flex;
-        }
-
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 1rem;
-            text-align: center;
-        }
-
-        nav {
-            width: 200px;
-            background-color: #333;
-            color: white;
-            height: 100vh;
-            position: fixed;
-            top: 0;
-            left: 0;
-            padding-top: 2rem;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            margin: 1rem 0;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 0.5rem 1rem;
-        }
-
-        nav ul li a:hover {
-            background-color: #575757;
-        }
-
-        main {
-            margin-left: 200px;
-            padding: 2rem;
-            flex-grow: 1;
-        }
-
-        section {
-            margin-bottom: 2rem;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            width: calc(100% - 200px);
-            bottom: 0;
-            left: 200px;
-        }
-
-        .feature {
-            border: 1px solid #ccc;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature h3 {
-            margin-top: 0;
-        }
-
-        .task-list, .notes-list, .todo-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .task-list li, .notes-list li, .todo-list li {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.5rem;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .task-list li:last-child, .notes-list li:last-child, .todo-list li:last-child {
-            border-bottom: none;
-        }
-
-        .task-list button, .notes-list button, .todo-list button {
-            background-color: #f44336;
-            color: white;
-            border: none;
-            padding: 0.5rem;
-            cursor: pointer;
-        }
-
-        .task-list button:hover, .notes-list button:hover, .todo-list button:hover {
-            background-color: #d32f2f;
-        }
-
-        .feature button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 0.5rem;
-        }
-
-        .feature button:hover {
-            background-color: #45a049;
-        }
-
-        #pomodoro-timer-display {
-            font-size: 2rem;
-            margin: 1rem 0;
-        }
-    </style>
-</head>
-<body>
-    <nav>
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#task-section">Task Management</a></li>
-            <li><a href="#calendar-section">Task Calendar</a></li>
-            <li><a href="#task-scheduling-section">Task Scheduling</a></li>
-            <li><a href="#pomodoro-section">Pomodoro Timer</a></li>
-            <li><a href="#habit-tracker-section">Habit Tracker</a></li>
-            <li><a href="#notes-section">Notes</a></li>
-            <li><a href="#todo-list-section">To-Do List</a></li>
-            <li><a href="#creativity-booster-section">Creativity Booster</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-    <main>
-        <header>
-            <h1>Personal Productivity Web App</h1>
-            <p>Your All-in-One Personal Productivity Hub: Manage Tasks, Schedule, Track Habits, Stay Focused, and Boost Creativity!</p>
-        </header>
-        <section id="home">
-            <h2>Home</h2>
-            <div class="feature" id="task-section">
-                <h3>Task Management</h3>
-                <input type="text" id="taskInput" placeholder="Enter a new task">
-                <button onclick="addTask()">Add Task</button>
-                <ul id="taskList" class="task-list">
-                    <li>No tasks left</li>
-                </ul>
-            </div>
-            <div class="feature" id="calendar-section">
-                <h3>Task Calendar</h3>
-                <div id="calendar"></div>
-            </div>
-            <div class="feature" id="task-scheduling-section">
-                <h3>Task Scheduling</h3>
-                <input type="datetime-local" id="task-due-date">
-                <select id="task-priority">
-                    <option value="urgent">Urgent</option>
-                    <option value="important">Important</option>
-                    <option value="remember">Remember</option>
-                </select>
-                <button id="schedule-task-btn" onclick="scheduleTask()">Schedule Task</button>
-                <ul id="scheduled-task-list" class="task-list"></ul>
-            </div>
-            <div class="feature" id="pomodoro-section">
-                <h3>Pomodoro Timer</h3>
-                <p id="pomodoro-timer-display">25:00</p>
-                <button id="start-timer-btn">Start</button>
-                <button id="stop-timer-btn">Stop</button>
-                <button id="reset-timer-btn">Reset</button>
-            </div>
-            <div class="feature" id="habit-tracker-section">
-                <h3>Habit Tracker</h3>
-                <input type="text" id="habit-name" placeholder="Enter Habit">
-                <button id="add-habit-btn">Add Habit</button>
-                <div id="habit-list"></div>
-            </div>
-            <div class="feature" id="notes-section">
-                <h3>Notes</h3>
-                <textarea id="note-input" placeholder="Write your notes here..."></textarea>
-                <button id="save-note-btn">Save Note</button>
-                <ul id="notes-list" class="notes-list"></ul>
-            </div>
-            <div class="feature" id="todo-list-section">
-                <h3>To-Do List</h3>
-                <input type="text" id="todo-input" placeholder="Add a new task">
-                <button id="add-todo-btn">Add</button>
-                <ul id="todo-list" class="todo-list"></ul>
-            </div>
-            <div class="feature" id="creativity-booster-section">
-                <h3>Creativity Booster</h3>
-                <button id="generate-prompt-btn">Generate Creative Prompt</button>
-                <p id="creative-prompt"></p>
-                <textarea id="creative-thoughts" placeholder="Write your ideas here..."></textarea>
-                <button id="save-creative-thoughts-btn">Save Thoughts</button>
-            </div>
-        </section>
-        <section id="about">
-            <h2>About</h2>
-            <p>This is the about section.</p>
-        </section>
-        <section id="contact">
-            <h2>Contact</h2>
-            <p>This is the contact section.</p>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2025 Personal Productivity Web App</p>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            loadTasks();
-            loadScheduledTasks();
-        });
-
-        function addTask() {
-            const taskInput = document.getElementById('taskInput');
-            const taskList = document.getElementById('taskList');
-            const taskText = taskInput.value.trim();
-
-            if (taskText === '') {
-                alert('Please enter a task.');
-                return;
-            }
-
-            const newTask = document.createElement('li');
-            newTask.innerHTML = `${taskText} <button onclick="deleteTask(this)">Delete</button>`;
-            taskList.appendChild(newTask);
-
-            taskInput.value = '';
-            updateTaskList();
-        }
-
-        function deleteTask(button) {
-            const task = button.parentElement;
-            task.remove();
-            updateTaskList();
-        }
-
-        function updateTaskList() {
-            const taskList = document.getElementById('taskList');
-            if (taskList.children.length === 0) {
-                const noTasks = document.createElement('li');
-                noTasks.textContent = 'No tasks left';
-                taskList.appendChild(noTasks);
-            } else if (taskList.children.length === 1 && taskList.children[0].textContent === 'No tasks left') {
-                taskList.children[0].remove();
-            }
-            saveTasks();
-        }
-
-        function saveTasks() {
-            const taskList = document.getElementById('taskList');
-            const tasks = [];
-            for (let i = 0; i < taskList.children.length; i++) {
-                if (taskList.children[i].textContent !== 'No tasks left') {
-                    tasks.push(taskList.children[i].textContent.replace(' Delete', ''));
+                const existingTaskPriority = scheduledTaskList.children[i].querySelector('button').getAttribute('data-priority');
+                if (comparePriority(taskPriority, existingTaskPriority) < 0) {
+                    scheduledTaskList.insertBefore(newScheduledTask, scheduledTaskList.children[i]);
+                    inserted = true;
+                    break;
                 }
             }
-            localStorage.setItem('tasks', JSON.stringify(tasks));
-        }
-
-        function loadTasks() {
-            const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-            const taskList = document.getElementById('taskList');
-            taskList.innerHTML = '';
-            tasks.forEach(task => {
-                const newTask = document.createElement('li');
-                newTask.innerHTML = `${task} <button onclick="deleteTask(this)">Delete</button>`;
-                taskList.appendChild(newTask);
-            });
-            if (tasks.length === 0) {
-                const noTasks = document.createElement('li');
-                noTasks.textContent = 'No tasks left';
-                taskList.appendChild(noTasks);
+            if (!inserted) {
+                scheduledTaskList.appendChild(newScheduledTask);
             }
-        }
-
-        function scheduleTask() {
-            const taskDueDate = document.getElementById('task-due-date').value;
-            const taskPriority = document.getElementById('task-priority').value;
-            const scheduledTaskList = document.getElementById('scheduled-task-list');
-
-            if (!taskDueDate) {
-                alert('Please select a due date.');
-                return;
-            }
-
-            const newScheduledTask = document.createElement('li');
-            newScheduledTask.innerHTML = `Due: ${taskDueDate}, Priority: ${taskPriority} <button onclick="deleteScheduledTask(this)">Delete</button>`;
-            scheduledTaskList.appendChild(newScheduledTask);
 
             saveScheduledTasks();
+        }
+
+        function comparePriority(priority1, priority2) {
+            const priorities = ['urgent-important', 'urgent-not-important', 'not-urgent-important', 'not-urgent-not-important'];
+            return priorities.indexOf(priority1) - priorities.indexOf(priority2);
         }
 
         function deleteScheduledTask(button) {
@@ -652,7 +333,7 @@
             task.remove();
             saveScheduledTasks();
         }
-+
+
         function saveScheduledTasks() {
             const scheduledTaskList = document.getElementById('scheduled-task-list');
             const scheduledTasks = [];
