@@ -138,19 +138,15 @@
             margin: 0 auto;
         }
 
-        .timetable-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-
         .timetable {
-            width: 48%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
 
         .timetable table {
             border-collapse: collapse;
-            width: 100%;
+            width: 80%;
         }
 
         .timetable th, .timetable td {
@@ -187,102 +183,99 @@
             <p>Your All-in-One Personal Productivity Hub: Manage Tasks, Schedule, Track Habits, Stay Focused, and Boost Creativity!</p>
         </header>
         <section id="timetable-section">
-            <h2>Daily and Weekly Routine</h2>
-            <div class="timetable-container">
-                <div class="timetable">
-                    <h3>Daily Routine</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Time</th>
-                                <th>Task</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>8:00 - 9:00</td>
-                                <td id="task-8-9"></td>
-                            </tr>
-                            <tr>
-                                <td>9:00 - 10:00</td>
-                                <td id="task-9-10"></td>
-                            </tr>
-                            <tr>
-                                <td>10:00 - 11:00</td>
-                                <td id="task-10-11"></td>
-                            </tr>
-                            <tr>
-                                <td>11:00 - 12:00</td>
-                                <td id="task-11-12"></td>
-                            </tr>
-                            <tr>
-                                <td>12:00 - 1:00</td>
-                                <td id="task-12-1"></td>
-                            </tr>
-                            <tr>
-                                <td>1:00 - 2:00</td>
-                                <td id="task-1-2"></td>
-                            </tr>
-                            <tr>
-                                <td>2:00 - 3:00</td>
-                                <td id="task-2-3"></td>
-                            </tr>
-                            <tr>
-                                <td>3:00 - 4:00</td>
-                                <td id="task-3-4"></td>
-                            </tr>
-                            <tr>
-                                <td>4:00 - 5:00</td>
-                                <td id="task-4-5"></td>
-                            </tr>
-                            <tr>
-                                <td>5:00 - 6:00</td>
-                                <td id="task-5-6"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="timetable">
-                    <h3>Weekly Routine</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Task</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Monday</td>
-                                <td id="task-monday"></td>
-                            </tr>
-                            <tr>
-                                <td>Tuesday</td>
-                                <td id="task-tuesday"></td>
-                            </tr>
-                            <tr>
-                                <td>Wednesday</td>
-                                <td id="task-wednesday"></td>
-                            </tr>
-                            <tr>
-                                <td>Thursday</td>
-                                <td id="task-thursday"></td>
-                            </tr>
-                            <tr>
-                                <td>Friday</td>
-                                <td id="task-friday"></td>
-                            </tr>
-                            <tr>
-                                <td>Saturday</td>
-                                <td id="task-saturday"></td>
-                            </tr>
-                            <tr>
-                                <td>Sunday</td>
-                                <td id="task-sunday"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <h2>Daily Routine</h2>
+            <div class="timetable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8:00 - 9:00</td>
+                            <td id="task-8-9"></td>
+                        </tr>
+                        <tr>
+                            <td>9:00 - 10:00</td>
+                            <td id="task-9-10"></td>
+                        </tr>
+                        <tr>
+                            <td>10:00 - 11:00</td>
+                            <td id="task-10-11"></td>
+                        </tr>
+                        <tr>
+                            <td>11:00 - 12:00</td>
+                            <td id="task-11-12"></td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 1:00</td>
+                            <td id="task-12-1"></td>
+                        </tr>
+                        <tr>
+                            <td>1:00 - 2:00</td>
+                            <td id="task-1-2"></td>
+                        </tr>
+                        <tr>
+                            <td>2:00 - 3:00</td>
+                            <td id="task-2-3"></td>
+                        </tr>
+                        <tr>
+                            <td>3:00 - 4:00</td>
+                            <td id="task-3-4"></td>
+                        </tr>
+                        <tr>
+                            <td>4:00 - 5:00</td>
+                            <td id="task-4-5"></td>
+                        </tr>
+                        <tr>
+                            <td>5:00 - 6:00</td>
+                            <td id="task-5-6"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2>Weekly Routine</h2>
+            <div class="timetable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td id="task-monday"></td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td id="task-tuesday"></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td id="task-wednesday"></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td id="task-thursday"></td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td id="task-friday"></td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td id="task-saturday"></td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td id="task-sunday"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
         <section id="home">
@@ -528,7 +521,9 @@
             const timeSlots = {
                 '8:00 - 9:00': 'task-8-9',
                 '9:00 - 10:00': 'task-9-10',
-                '10:00 - 11:00<!DOCTYPE html>
+                '10:00 - 11:00': 'task-10-11',
+                '11:00 - 12:00': 'task-11-12',
+                '12:00 - 1:00<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -668,19 +663,15 @@
             margin: 0 auto;
         }
 
-        .timetable-container {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2rem;
-        }
-
         .timetable {
-            width: 48%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
         }
 
         .timetable table {
             border-collapse: collapse;
-            width: 100%;
+            width: 80%;
         }
 
         .timetable th, .timetable td {
@@ -717,102 +708,99 @@
             <p>Your All-in-One Personal Productivity Hub: Manage Tasks, Schedule, Track Habits, Stay Focused, and Boost Creativity!</p>
         </header>
         <section id="timetable-section">
-            <h2>Daily and Weekly Routine</h2>
-            <div class="timetable-container">
-                <div class="timetable">
-                    <h3>Daily Routine</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Time</th>
-                                <th>Task</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>8:00 - 9:00</td>
-                                <td id="task-8-9"></td>
-                            </tr>
-                            <tr>
-                                <td>9:00 - 10:00</td>
-                                <td id="task-9-10"></td>
-                            </tr>
-                            <tr>
-                                <td>10:00 - 11:00</td>
-                                <td id="task-10-11"></td>
-                            </tr>
-                            <tr>
-                                <td>11:00 - 12:00</td>
-                                <td id="task-11-12"></td>
-                            </tr>
-                            <tr>
-                                <td>12:00 - 1:00</td>
-                                <td id="task-12-1"></td>
-                            </tr>
-                            <tr>
-                                <td>1:00 - 2:00</td>
-                                <td id="task-1-2"></td>
-                            </tr>
-                            <tr>
-                                <td>2:00 - 3:00</td>
-                                <td id="task-2-3"></td>
-                            </tr>
-                            <tr>
-                                <td>3:00 - 4:00</td>
-                                <td id="task-3-4"></td>
-                            </tr>
-                            <tr>
-                                <td>4:00 - 5:00</td>
-                                <td id="task-4-5"></td>
-                            </tr>
-                            <tr>
-                                <td>5:00 - 6:00</td>
-                                <td id="task-5-6"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="timetable">
-                    <h3>Weekly Routine</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Day</th>
-                                <th>Task</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Monday</td>
-                                <td id="task-monday"></td>
-                            </tr>
-                            <tr>
-                                <td>Tuesday</td>
-                                <td id="task-tuesday"></td>
-                            </tr>
-                            <tr>
-                                <td>Wednesday</td>
-                                <td id="task-wednesday"></td>
-                            </tr>
-                            <tr>
-                                <td>Thursday</td>
-                                <td id="task-thursday"></td>
-                            </tr>
-                            <tr>
-                                <td>Friday</td>
-                                <td id="task-friday"></td>
-                            </tr>
-                            <tr>
-                                <td>Saturday</td>
-                                <td id="task-saturday"></td>
-                            </tr>
-                            <tr>
-                                <td>Sunday</td>
-                                <td id="task-sunday"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <h2>Daily Routine</h2>
+            <div class="timetable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>8:00 - 9:00</td>
+                            <td id="task-8-9"></td>
+                        </tr>
+                        <tr>
+                            <td>9:00 - 10:00</td>
+                            <td id="task-9-10"></td>
+                        </tr>
+                        <tr>
+                            <td>10:00 - 11:00</td>
+                            <td id="task-10-11"></td>
+                        </tr>
+                        <tr>
+                            <td>11:00 - 12:00</td>
+                            <td id="task-11-12"></td>
+                        </tr>
+                        <tr>
+                            <td>12:00 - 1:00</td>
+                            <td id="task-12-1"></td>
+                        </tr>
+                        <tr>
+                            <td>1:00 - 2:00</td>
+                            <td id="task-1-2"></td>
+                        </tr>
+                        <tr>
+                            <td>2:00 - 3:00</td>
+                            <td id="task-2-3"></td>
+                        </tr>
+                        <tr>
+                            <td>3:00 - 4:00</td>
+                            <td id="task-3-4"></td>
+                        </tr>
+                        <tr>
+                            <td>4:00 - 5:00</td>
+                            <td id="task-4-5"></td>
+                        </tr>
+                        <tr>
+                            <td>5:00 - 6:00</td>
+                            <td id="task-5-6"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <h2>Weekly Routine</h2>
+            <div class="timetable">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Task</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Monday</td>
+                            <td id="task-monday"></td>
+                        </tr>
+                        <tr>
+                            <td>Tuesday</td>
+                            <td id="task-tuesday"></td>
+                        </tr>
+                        <tr>
+                            <td>Wednesday</td>
+                            <td id="task-wednesday"></td>
+                        </tr>
+                        <tr>
+                            <td>Thursday</td>
+                            <td id="task-thursday"></td>
+                        </tr>
+                        <tr>
+                            <td>Friday</td>
+                            <td id="task-friday"></td>
+                        </tr>
+                        <tr>
+                            <td>Saturday</td>
+                            <td id="task-saturday"></td>
+                        </tr>
+                        <tr>
+                            <td>Sunday</td>
+                            <td id="task-sunday"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </section>
         <section id="home">
@@ -1058,4 +1046,6 @@
             const timeSlots = {
                 '8:00 - 9:00': 'task-8-9',
                 '9:00 - 10:00': 'task-9-10',
-                '10:00 - 11:00
+                '10:00 - 11:00': 'task-10-11',
+                '11:00 - 12:00': 'task-11-12',
+                '12:00 - 1:00
